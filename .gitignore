@@ -1,0 +1,22 @@
+# Node / JS
+node_modules/
+dist/
+dist-ssr/
+*.log
+
+# Environment files (contains credentials)
+.env
+.env.*
+!.env.example
+
+# Compilation/Build logs
+compile-errors.txt
+
+# OS/System files
+.DS_Store
+Thumbs.db
+
+# Editor configurations
+.vscode/
+.idea/
+
