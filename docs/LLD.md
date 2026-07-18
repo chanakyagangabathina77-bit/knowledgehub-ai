@@ -384,7 +384,6 @@ Future enhancement:
 Structured logging using Winston or Pino
 Cloud log aggregation
 15. Future Improvements
-Docker support
 Redis caching
 Role-Based Access Control
 OCR integration

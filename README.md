@@ -116,7 +116,7 @@ This project was built for a Full Stack Developer technical assessment. It demon
 - Stream AI responses in real time
 - Store files in object storage (S3) instead of inline MongoDB content
 - Add embeddings + vector search for better answer relevance
-- Add unit/integration tests and Docker Compose setup
+- Add unit and integration tests
 - Deploy frontend and backend separately with CI/CD
 - Add role-based access and team workspaces
 

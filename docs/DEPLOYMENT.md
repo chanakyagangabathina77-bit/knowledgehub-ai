@@ -41,35 +41,7 @@ This guide outlines the deployment options, configurations, and environment setu
 
 ---
 
-## 2. Containerized Deployment (Docker)
-
-You can run the entire application stack (Frontend, Backend, and Database) locally using Docker. This ensures environment consistency.
-
-### Prerequisites
-- **Docker Desktop** installed and running.
-
-### Configuration
-1. Ensure the `VITE_API_BASE_URL` in `frontend/Dockerfile` or `docker-compose.yml` points to the containerized backend address or localhost, depending on how port mapping is configured. In a Docker Compose environment, the frontend runs in the user's browser, so it should communicate with the backend via `http://localhost:5000/api`.
-
-### Running with Docker Compose
-From the root project directory, run:
-```bash
-docker-compose up --build
-```
-
-This will spin up:
-- **MongoDB** on `mongodb://localhost:27017/knowledgehub`
-- **Backend API Server** on `http://localhost:5000`
-- **Frontend SPA Client** on `http://localhost:8080` (served via Nginx)
-
-To stop the containers, press `Ctrl+C` or run:
-```bash
-docker-compose down
-```
-
----
-
-## 3. Production Cloud Deployment
+## 2. Production Cloud Deployment
 
 ### Database: MongoDB Atlas
 1. Create a free cluster on [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database).
@@ -85,6 +57,7 @@ docker-compose down
 5. Configure the Environment Variables in the service settings:
    - `PORT`: `5000` (or leave to automatic port assignment)
    - `MONGODB_URI`: `<your MongoDB Atlas URI>`
+   - `NODE_VERSION`: `20` (Critical: required by `@google/genai` and mongoose)
    - `JWT_SECRET`: `<secure production secret>`
    - `JWT_EXPIRES_IN`: `7d`
    - `GEMINI_API_KEY`: `<your production Google Gemini API key>`
@@ -113,8 +86,8 @@ docker-compose down
 
 ---
 
-## 4. Production Checklist
+## 3. Production Checklist
 - [ ] **Security**: Change all default passwords and secret keys. Do not commit `.env` files to Git.
 - [ ] **CORS Settings**: Restrict backend CORS middleware (`backend/src/app.ts`) to allow requests only from your production frontend domain.
 - [ ] **API Fallbacks**: Ensure that a valid Google Gemini API key is supplied, or verify that the local keywords-based summarizer fallback behaves gracefully for heavy usage.
-- [ ] **Nginx Config (for Docker/VMs)**: Ensure security headers (HSTS, X-Frame-Options) are configured.
+- [ ] **Web Server Headers**: Ensure security headers (HSTS, X-Frame-Options) are configured.

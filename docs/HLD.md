@@ -259,8 +259,6 @@ Potential improvements include:
 Cloud object storage (AWS S3)
 Redis caching
 Load balancing
-Containerization with Docker
-Kubernetes deployment
 Vector databases for Retrieval-Augmented Generation (RAG)
 Multiple AI providers
 Microservices architecture

@@ -59,6 +59,6 @@
 - Stream AI responses in real time
 - Add role-based access control and multi-user workspaces
 - Add unit and integration tests for backend and frontend
-- Add Docker support for consistent local setup
+- Add end-to-end tests for backend and frontend
 - Use object storage for large document uploads instead of keeping all content in MongoDB
 - Cache AI results or use embeddings for better performance and relevance
