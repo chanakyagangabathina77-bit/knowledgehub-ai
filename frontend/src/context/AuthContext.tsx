@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { login as loginApi, register as registerApi } from '../api/auth'
@@ -14,19 +14,18 @@ type StoredAuth = {
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [auth, setAuth] = useState<StoredAuth | null>(null)
-  const navigate = useNavigate()
-
-  useEffect(() => {
+  const [auth, setAuth] = useState<StoredAuth | null>(() => {
     const stored = localStorage.getItem(STORAGE_KEY)
     if (stored) {
       try {
-        setAuth(JSON.parse(stored))
+        return JSON.parse(stored)
       } catch {
         localStorage.removeItem(STORAGE_KEY)
       }
     }
-  }, [])
+    return null
+  })
+  const navigate = useNavigate()
 
   const setStoredAuth = (value: StoredAuth | null) => {
     setAuth(value)

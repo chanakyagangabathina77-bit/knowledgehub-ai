@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
@@ -16,7 +17,10 @@ export default function Login() {
     try {
       await login({ email, password })
     } catch (error) {
-      toast.error('Login failed. Please check your credentials and try again.')
+      const message = axios.isAxiosError(error)
+        ? error.response?.data?.message || 'Login failed. Please check your credentials and try again.'
+        : 'Login failed. Please check your credentials and try again.'
+      toast.error(message)
       console.error(error)
     } finally {
       setLoading(false)

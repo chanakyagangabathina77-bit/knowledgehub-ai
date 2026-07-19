@@ -5,7 +5,8 @@ export const registerValidator = [
     .trim()
     .notEmpty()
     .withMessage("Name is required")
-    .isLength({ min: 3 }),
+    .isLength({ min: 3 })
+    .withMessage("Name must be at least 3 characters"),
 
   body("email")
     .trim()
@@ -19,6 +20,7 @@ export const registerValidator = [
 
 export const loginValidator = [
   body("email")
+    .trim()
     .isEmail()
     .withMessage("Valid email is required"),
 

@@ -6,7 +6,7 @@ class UserRepository {
   }
 
   async findByEmail(email: string): Promise<IUser | null> {
-    return await User.findOne({ email });
+    return await User.findOne({ email: email.trim().toLowerCase() });
   }
 
   async findById(id: string): Promise<IUser | null> {
@@ -14,7 +14,7 @@ class UserRepository {
   }
 
   async existsByEmail(email: string): Promise<boolean> {
-    const user = await User.exists({ email });
+    const user = await User.exists({ email: email.trim().toLowerCase() });
     return !!user;
   }
 }
