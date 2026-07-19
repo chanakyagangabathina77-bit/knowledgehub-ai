@@ -30,6 +30,7 @@ app.get("/", (_, res) => {
 });
 
 app.use("/api", routes);
+app.use("/", routes);
 
 app.use(notFoundHandler);
 
