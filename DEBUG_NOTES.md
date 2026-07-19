@@ -21,12 +21,12 @@
 - Investigation: Rebuilt the frontend and inspected the exact TypeScript error in `src/api/client.ts`.
 - Solution: Cast headers safely with `as any` after merging existing headers and the authorization token.
 
-## Issue 4: Empty Documentation Files
+## Issue 4: Backend Route Resolution
 
-- Problem: Required assessment docs were placeholders and not filled.
-- Root Cause: Documentation had not yet been completed for the assignment.
-- Investigation: Read `AI_USAGE.md`, `DEBUG_NOTES.md`, and `ARCHITECTURE.md` and confirmed they were empty.
-- Solution: Added thorough documentation describing AI usage, architecture, debugging, and design decisions.
+- Problem: API requests returned 404 after deployment.
+- Root Cause: Backend routes were mounted differently between local and production environments.
+- Investigation: Compared Express route configuration and deployment logs.
+- Solution: Added root API mapping and standardized route registration for both local development and production deployment.
 
 ## Issue 5: Synchronous Authentication State Initialization
 

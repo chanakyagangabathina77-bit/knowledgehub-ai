@@ -2,15 +2,19 @@
 
 ## AI Tools Used
 
-- GitHub Copilot / ChatGPT-like assistant (AI code assistance)
-- Google Gemini API via the `@google/genai` Node.js SDK for document question answering
+- OpenAI ChatGPT (GPT-5.5) for architecture guidance, code generation, debugging assistance, documentation drafting, and project planning.
+- Google Gemini API (`@google/genai`) for the application's AI-powered document question answering.
 
 ## How AI Was Used
 
-- Generated frontend React page layouts, API client logic, and component structure
-- Helped design backend service/controller/repository patterns
-- Provided guidance on JWT authentication, request validation, and document upload handling
-- Assisted in writing documentation and debugging TypeScript issues
+AI was primarily used to:
+
+- Generate initial code scaffolding
+- Refactor backend architecture
+- Produce boilerplate React components
+- Debug TypeScript compilation issues
+- Generate documentation drafts
+- Suggest implementation approaches for JWT authentication, file upload, and AI integration
 
 ## Example Prompts
 

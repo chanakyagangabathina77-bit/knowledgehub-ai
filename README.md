@@ -2,6 +2,27 @@
 
 KnowledgeHub AI is a full-stack application where authenticated users can upload documents, ask AI-powered questions about them, search conversation history, and track usage from a dashboard.
 
+## Live Demo
+
+https://knowledgehub-ai-icqu.vercel.app/
+
+## GitHub Repository
+
+https://github.com/chanakyagangabathina77-bit/knowledgehub-ai
+
+## Features
+
+- JWT Authentication
+- Protected Routes
+- PDF Upload
+- TXT Upload
+- Markdown Upload
+- AI Question Answering
+- Conversation History
+- Dashboard Analytics
+- Search & Filtering
+- Responsive UI
+
 ## Project Overview
 
 This project was built for a Full Stack Developer technical assessment. It demonstrates:

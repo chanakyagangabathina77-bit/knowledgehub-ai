@@ -1,5 +1,21 @@
 # Architecture
 
+## High-Level Architecture
+
+```
+Client (React)
+      ↓
+REST API (Express)
+      ↓
+Service Layer
+      ↓
+Repository Layer
+      ↓
+   MongoDB
+      ↓
+Google Gemini API
+```
+
 ## Project Structure
 
 - `backend/`
