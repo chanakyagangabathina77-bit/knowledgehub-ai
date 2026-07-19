@@ -27,3 +27,21 @@
 - Root Cause: Documentation had not yet been completed for the assignment.
 - Investigation: Read `AI_USAGE.md`, `DEBUG_NOTES.md`, and `ARCHITECTURE.md` and confirmed they were empty.
 - Solution: Added thorough documentation describing AI usage, architecture, debugging, and design decisions.
+
+## Issue 5: Synchronous Authentication State Initialization
+
+- Problem: When refreshing protected pages (like `/dashboard`), the user was briefly shown the login page or redirected to the login screen, even with a valid session in `localStorage`.
+- Root Cause: Auth state was initialized to `null` and loaded asynchronously on mount in a `useEffect`. During the first render, `isAuthenticated` was `false`, causing the route protector to trigger a redirect.
+- Solution: Changed `useState` in `AuthContext.tsx` to read from `localStorage` synchronously during state initialization, preventing any incorrect redirections.
+
+## Issue 6: Case Sensitivity and Whitespace in Email Lookups
+
+- Problem: Registration or login failed when emails contained mixed casing or leading/trailing spaces, throwing server errors or validation errors.
+- Root Cause: Mongoose schema trimmed and lowercased emails upon saving, but MongoDB find queries (like `findOne`) do not automatically run setters on criteria. Lookups were done with the raw user input, failing to match.
+- Solution: Normalized the email parameter using `.trim().toLowerCase()` in the repository query lookups in `user.repository.ts`, and updated the backend validation rules.
+
+## Issue 7: Axios Request Path Resolution and Route Mismatches
+
+- Problem: Clicking login/register resulted in a 404 "Route /auth/register not found" error when the backend base URL did not end in `/api`.
+- Root Cause: Axios combines base URL and requested path. If the base URL was set without the `/api` suffix, the requests were routed to `/auth/register` instead of `/api/auth/register`.
+- Solution: Mounted the backend API router under both `/api` and `/` paths in `app.ts` as a robust fallback.
